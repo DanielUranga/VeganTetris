@@ -3,21 +3,17 @@
 #include <iostream>
 using namespace std;
 
-Surface::Surface()
-{
-}
-
-Surface::Surface(SDL_Surface* inSurface)
-{
-    surface = std::make_shared<SurfaceWrapper>(inSurface);
-}
-
 Surface::Surface(const char* path)
 {
-    surface = std::make_shared<SurfaceWrapper>(path);
+	surface = SDL_LoadBMP(path);
 }
 
-Surface Surface::LoadBMP(const char* path)
+Surface::~Surface()
+{
+	SDL_FreeSurface(surface);
+}
+
+Surface* Surface::LoadBMP(const char* path)
 {
     auto foundSurface = SurfaceCache::surfaceCache.find(path);
     if (foundSurface != SurfaceCache::surfaceCache.end())
@@ -26,7 +22,7 @@ Surface Surface::LoadBMP(const char* path)
     }
     else
     {
-        Surface newSurface(path);
+        Surface* newSurface = new Surface(path);
         SurfaceCache::surfaceCache[path] = newSurface;
         return newSurface;
     }

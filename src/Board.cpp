@@ -17,7 +17,7 @@ Board::Board(Renderer& ren, size_t cols, size_t rows)
 	, fallSpeed(0.1f)
 	, howManyFramesAgoUpdatedCuadtritosYPos(0)
 	, collisionTimer(0)
-	, background(ren, Surface::LoadBMP("background.bmp"))
+	, background(ren, *Surface::LoadBMP("background.bmp"))
 {
     nextRandomTetro = getRandomBetweenZeroAndLessThan(Tetrominio::Kind::KindMax);
     addNewRandomTetrominio();

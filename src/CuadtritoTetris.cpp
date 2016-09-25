@@ -27,7 +27,7 @@ CuadtritoTetris CuadtritoTetris::CreateCuadtritoTetris(Renderer& ren, Color colo
     }
     else
     {
-        Texture* t = Texture::CreateTextureFromSurface(ren, Surface::LoadBMP("illuminati.bmp"));
+        Texture* t = Texture::CreateTextureFromSurface(ren, *Surface::LoadBMP("illuminati.bmp"));
         std::tuple<int, int, int> rgb = ColorUtil::getRGB(color);
         t->SetColorMod(std::get<0>(rgb), std::get<1>(rgb), std::get<2>(rgb));
         CuadtritoTetrisTextureCache::textureCache[color] = t;

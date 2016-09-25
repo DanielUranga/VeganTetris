@@ -8,8 +8,7 @@ Renderer::Renderer(SDL_Renderer * inRenderer) : renderer(inRenderer)
 }
 
 Renderer::~Renderer()
-{
-    cout << "Destroy renderer" << endl;
+{    
     SDL_DestroyRenderer(renderer);
 }
 

@@ -7,23 +7,18 @@
 class Surface
 {
 public:
-    Surface();
-    Surface(SDL_Surface*);
-    Surface(const char* path);
-    SDL_Surface* get() { return surface.get()->surf; }
-    static Surface LoadBMP(const char* path);
+    explicit Surface(const char* path);
+	Surface(Surface const&) = delete;
+	Surface& operator=(Surface const&) = delete;
+	Surface(Surface&&) = default;
+	virtual ~Surface();
+	SDL_Surface* get() { return surface; }
+    static Surface* LoadBMP(const char* path);
 private:
-    struct SurfaceWrapper
-    {
-        SDL_Surface* surf;
-        SurfaceWrapper(const char* path) { surf = SDL_LoadBMP(path); };
-        SurfaceWrapper(SDL_Surface* inSurf) : surf(inSurf) {}
-        ~SurfaceWrapper() { SDL_FreeSurface(surf); }
-    };
-    std::shared_ptr<SurfaceWrapper> surface;
+    SDL_Surface* surface;
 };
 
 namespace SurfaceCache
 {
-    static std::map<std::string, Surface> surfaceCache;
+    static std::map<std::string, Surface*> surfaceCache;
 }
