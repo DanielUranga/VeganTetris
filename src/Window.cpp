@@ -10,7 +10,6 @@ Window::Window(SDL_Window* inWindow) : window(inWindow)
 
 Window::~Window()
 {
-    cout << "Destroy window" << endl;
     SDL_DestroyWindow(window);
 }
 

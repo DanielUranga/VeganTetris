@@ -11,7 +11,7 @@ class Renderer
 {
 public:
     Renderer(SDL_Renderer* inRenderer);
-    ~Renderer();
+	virtual ~Renderer();
     void Clear();
     void Copy(Texture &t, SDL_Rect* src = nullptr, SDL_Rect* dst = nullptr);
     void Present();

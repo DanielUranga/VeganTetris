@@ -16,7 +16,7 @@ public:
 	Texture(Texture const&) = delete;
 	Texture& operator=(Texture const&) = delete;
 	Texture(Texture&&) = default;
-    ~Texture();
+	virtual ~Texture();
     int SetColorMod(Uint8 r, Uint8 g, Uint8 b);
     static Texture* CreateTextureFromSurface(Renderer &ren, Surface &bmp);
     SDL_Texture* get() { return texture; }

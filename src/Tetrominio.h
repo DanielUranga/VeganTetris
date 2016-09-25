@@ -22,7 +22,7 @@ public:
     };
 
     explicit Tetrominio();
-    ~Tetrominio();
+	virtual ~Tetrominio();
     void Copy(Renderer& ren);
     void RotateR();
     void RotateL();

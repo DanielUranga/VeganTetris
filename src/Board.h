@@ -10,7 +10,7 @@ class Board
 {
 public:
     Board(Renderer& ren, size_t rows, size_t cols);
-    ~Board();
+    virtual ~Board();
     void Update(int dt);
     void Copy(Renderer& ren);
     void tryMoveLeft();

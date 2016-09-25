@@ -6,7 +6,7 @@ class Window
 {
 public:
     Window(SDL_Window* inWindow);
-    ~Window();
+	virtual ~Window();
     static Window CreateWindow(
         const char* name = "SDL",
         int x = SDL_WINDOWPOS_CENTERED,

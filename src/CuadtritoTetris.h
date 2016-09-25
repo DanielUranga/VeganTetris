@@ -8,7 +8,7 @@ class CuadtritoTetris
 {
 public:
 
-    ~CuadtritoTetris();
+	virtual ~CuadtritoTetris();
     int GetX() const { return rect.x; }
     int GetY() const { return rect.y; }
     void SetX(int x) { rect.x = x; }
