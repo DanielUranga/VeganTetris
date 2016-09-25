@@ -8,13 +8,13 @@
 const float Board::fallSpeedIncrement = 0.009f;
 
 Board::Board(Renderer& ren, size_t cols, size_t rows)
-	: cuadtritosFijos()
+	: fallSpeed(0.1f)
+	, lost(false)
+	, cuadtritosFijos()
 	, cuadtritosBoardRows(rows)
 	, ren(ren)
-	, lost(false)
 	, cols(cols)
 	, rows(rows)
-	, fallSpeed(0.1f)
 	, howManyFramesAgoUpdatedCuadtritosYPos(0)
 	, collisionTimer(0)
 	, background(ren, *Surface::LoadBMP("background.bmp"))

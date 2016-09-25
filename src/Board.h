@@ -33,6 +33,7 @@ private:
     void updateCuadtritosYPos(std::vector<CuadtritoTetris>& cuadtritos, size_t yPos, int dt);
 
     static const float fallSpeedIncrement;
+
     float fallSpeed;
     bool lost;
     Tetrominio currentTetro;
