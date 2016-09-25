@@ -1,0 +1,11 @@
+﻿  Window.cpp
+  Texture.cpp
+  Tetrominio.cpp
+  Surface.cpp
+  Renderer.cpp
+  main.cpp
+  CuadtritoTetris.cpp
+  Board.cpp
+  Generating Code...
+  VeganTetris.vcxproj -> C:\Users\fersbery\Documents\Visual Studio 2015\Projects\vegan\src\Debug\VeganTetris.exe
+  VeganTetris.vcxproj -> C:\Users\fersbery\Documents\Visual Studio 2015\Projects\vegan\src\Debug\VeganTetris.pdb (Partial PDB)
