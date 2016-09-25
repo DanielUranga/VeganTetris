@@ -1,18 +1,27 @@
 #include "Texture.h"
 
-Texture::Texture() : texture(nullptr)
+Texture::Texture() : texture(nullptr), rect(nullptr)
 {
+
 }
 
-Texture::Texture(SDL_Texture* inTexture)
+Texture::Texture(Renderer &ren, Surface &bmp)
+	: texture(SDL_CreateTextureFromSurface(ren.get(), bmp.get()))
+	, rect(new SDL_Rect())
 {
-    SDL_Rect* r = new SDL_Rect();
-    texture = std::make_shared<TextureWrapper>(inTexture, r);
-    SDL_QueryTexture(inTexture, NULL, NULL, &(r->w), &(r->h));
+    SDL_QueryTexture(texture, NULL, NULL, &(rect->w), &(rect->h));
 }
 
 Texture::~Texture()
 {
+	if (nullptr != rect)
+	{
+		delete rect;
+	}
+	if (nullptr != texture)
+	{
+		SDL_DestroyTexture(texture);
+	}
 }
 
 int Texture::SetColorMod(Uint8 r, Uint8 g, Uint8 b)
@@ -20,17 +29,17 @@ int Texture::SetColorMod(Uint8 r, Uint8 g, Uint8 b)
     return SDL_SetTextureColorMod(get(), r, g, b);
 }
 
-Texture Texture::CreateTextureFromSurface(Renderer &ren, Surface &bmp)
+Texture* Texture::CreateTextureFromSurface(Renderer& ren, Surface& bmp)
 {
-    return SDL_CreateTextureFromSurface(ren.get(), bmp.get());
+	return new Texture(ren, bmp);
 }
 
 void Texture::SetAlpha(Uint8 alpha)
 {
-    SDL_SetTextureAlphaMod(texture->tex, alpha);
+    SDL_SetTextureAlphaMod(texture, alpha);
 }
 
 void Texture::SetBlendMode(SDL_BlendMode blendMode)
 {
-    SDL_SetTextureBlendMode(texture->tex, blendMode);
+    SDL_SetTextureBlendMode(texture, blendMode);
 }

@@ -8,15 +8,16 @@
 const float Board::fallSpeedIncrement = 0.009f;
 
 Board::Board(Renderer& ren, size_t cols, size_t rows)
-    : cuadtritosFijos()
-    , cuadtritosBoardRows(rows)
-    , ren(ren)
-    , lost(false)
-    , cols(cols)
-    , rows(rows)
-    , fallSpeed(0.1f)
-    , howManyFramesAgoUpdatedCuadtritosYPos(0)
-    , collisionTimer(0)
+	: cuadtritosFijos()
+	, cuadtritosBoardRows(rows)
+	, ren(ren)
+	, lost(false)
+	, cols(cols)
+	, rows(rows)
+	, fallSpeed(0.1f)
+	, howManyFramesAgoUpdatedCuadtritosYPos(0)
+	, collisionTimer(0)
+	, background(ren, Surface::LoadBMP("background.bmp"))
 {
     nextRandomTetro = getRandomBetweenZeroAndLessThan(Tetrominio::Kind::KindMax);
     addNewRandomTetrominio();
@@ -35,7 +36,6 @@ Board::Board(Renderer& ren, size_t cols, size_t rows)
         cuadtritosFijos.push_back(c1);
         cuadtritosFijos.push_back(c2);
     }
-    background = Texture::CreateTextureFromSurface(ren, Surface::LoadBMP("background.bmp"));
     backgroundRect.x = 0;
     backgroundRect.y = rows * CuadtritoTetris::CuadtritoSize - background.getH();
     backgroundRect.w = background.getW();

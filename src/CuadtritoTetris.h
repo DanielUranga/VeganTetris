@@ -21,13 +21,13 @@ public:
 
 private:
 
-    CuadtritoTetris(Texture& inTex, SDL_Rect& inRect);
-    Texture tex;
+    CuadtritoTetris(Texture* inTex, SDL_Rect& inRect);
+    Texture* tex;
     SDL_Rect rect;
 
 };
 
 namespace CuadtritoTetrisTextureCache
 {
-    static std::map<Color, Texture> textureCache;
+    static std::map<Color, Texture*> textureCache;
 }
