@@ -24,6 +24,7 @@ private:
     CuadtritoTetris(Texture* inTex, SDL_Rect& inRect);
     Texture* tex;
     SDL_Rect rect;
+	static const char* sIlluminatiPath;
 
 };
 

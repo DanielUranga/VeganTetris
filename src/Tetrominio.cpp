@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <algorithm>
+#include <climits>
 
 const std::pair<int, int> Tetrominio::tetrominioGrids[Tetrominio::Kind::KindMax][4][4] = {
     // I:
@@ -73,10 +74,22 @@ void Tetrominio::Copy(Renderer & ren)
     }
 }
 
+void Tetrominio::SetX(float x)
+{
+	xBase = x;
+	UpdateCuadtritosPositions();
+}
+
+void Tetrominio::SetY(float y)
+{
+	yBase = y;
+	UpdateCuadtritosPositions();
+}
+
 int Tetrominio::GetWidth()
 {
-    int min = 9999;
-    int max = -9999;
+    int min = INT_MAX;
+    int max = INT_MIN;
     for (auto& c : cuadtritos)
     {
         min = std::min(min, c.GetX());

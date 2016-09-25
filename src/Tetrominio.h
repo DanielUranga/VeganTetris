@@ -34,9 +34,9 @@ public:
     // KindMax tetrominions, each one having 4 rotations, each one having 4 cuadtritos
     static const std::pair<int, int> tetrominioGrids[KindMax][4][4];
 
-    float SetX(float x) { xBase = x; UpdateCuadtritosPositions(); return x; }
+	void SetX(float x);
     float GetX() { return xBase; }
-    float SetY(float y) { yBase = y; UpdateCuadtritosPositions(); return y; }
+	void SetY(float y);
     float GetY() { return yBase; }
     int GetWidth();
 
